@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<!-- {% if user and user.id %}
+    <div class="user-name">{{'안녕하세요! ' + user.nick + '님'}}</div>
+        <div class="half">
+            <div>팔로잉</div>
+            <div class="count following-count">{{followingCount}}</div>
+        </div>
+        <div class="half">
+            <div>팔로워</div>
+            <div class="count follower-count">{{followerCount}}</div>
+        </div>
+        <input id="my-id" type="hidden" value="{{user.id}}">
+        <a id="my-profile" href="/profile" class="btn">내 프로필</a>
+        <a id="logout" href="/auth/logout" class="btn">로그아웃</a>
+
+{% else %} -->
+    <form id="login-form" action="/auth/login" method="post">
+        <div class="wrap">
+            <div class="login">
+                <h2>Log-in</h2>
+                <div class="login_sns">
+                <li><a id="kakao" href="/auth/kakao" class="btn"><img src="public/img/kakao_icon.png" alt="hello"/></a></li>
+                </div>
+                <div class="login_id">
+                    <h4>E-mail</h4>
+                    <input id="email" type="email" name="email" placeholder="Email" required autofocus>
+                </div>
+                <div class="login_pw">
+                    <h4>Password</h4>
+                    <input  id="password" type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="login_etc">
+                    <div class="checkbox">
+                    <input type="checkbox" name="" id=""> Remember Me?
+                    </div>
+                    <div class="forgot_pw">
+                        <a id="join" href="/join" class="btn">회원가입</a>
+                </div>
+                </div>
+                <div class="submit">
+                    <button id="login" type="submit" class="btn">로그인</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endif %}
+
+<script>
+    window.onload = () => {
+      if (new URL(location.href).searchParams.get('loginError')) {
+        alert(new URL(location.href).searchParams.get('loginError'));
+      }
+    };
+</script>
+
+</body>
+</html>
